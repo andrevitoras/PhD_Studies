@@ -1,0 +1,1619 @@
+// ----------------- This set of commands will configure a SolTrace LK script ----------------
+
+
+// ---- Setting the Sun (source of rays) options  -----------------------
+
+sunopt({
+'useldh'=false, 'ptsrc'=false,
+'x'=0.9602936857, 'y'=0.0, 'z'=0.278991106,
+'shape'='p', 'halfwidth'=4.65});
+// -----------------------------------------------------------------------
+
+// ---- Setting the Optics box ----------------------------------------------------------- 
+
+clearoptics();
+// ---- Add Surface Optical Property -----------------------------------------------
+
+addoptic('primaries_refl');
+// ---- Set Interface -------------------
+opticopt('primaries_refl', 1, {'dist'='g',
+'refl'=0.92, 'trans'=0, 'errslope'=0.0,'errspec'=5.099,
+'refractr'=1.0, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// ---- Set Interface -------------------
+opticopt('primaries_refl', 2, {'dist'='g',
+'refl'=0, 'trans'=0, 'errslope'=0.0,'errspec'=5.099,
+'refractr'=1.0, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// -------------------------------------------------------------------------
+
+// ---- Add Surface Optical Property -----------------------------------------------
+
+addoptic('secondary_refl');
+// ---- Set Interface -------------------
+opticopt('secondary_refl', 1, {'dist'='g',
+'refl'=0.95, 'trans'=0, 'errslope'=2.5,'errspec'=0.0,
+'refractr'=1.0, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// ---- Set Interface -------------------
+opticopt('secondary_refl', 2, {'dist'='g',
+'refl'=0.95, 'trans'=0, 'errslope'=2.5,'errspec'=0.0,
+'refractr'=1.0, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// -------------------------------------------------------------------------
+
+// ---- Add Surface Optical Property -----------------------------------------------
+
+addoptic('evacuated_tube_outer_cover');
+// ---- Set Interface -------------------
+opticopt('evacuated_tube_outer_cover', 1, {'dist'='g',
+'refl'=0, 'trans'=0.97468, 'errslope'=0.0,'errspec'=0.0,
+'refractr'=1.52, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// ---- Set Interface -------------------
+opticopt('evacuated_tube_outer_cover', 2, {'dist'='g',
+'refl'=0, 'trans'=0.97468, 'errslope'=0.0,'errspec'=0.0,
+'refractr'=1.0, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// -------------------------------------------------------------------------
+
+// ---- Add Surface Optical Property -----------------------------------------------
+
+addoptic('evacuated_tube_inner_cover');
+// ---- Set Interface -------------------
+opticopt('evacuated_tube_inner_cover', 1, {'dist'='g',
+'refl'=0, 'trans'=0.97468, 'errslope'=0.0,'errspec'=0.0,
+'refractr'=1.0, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// ---- Set Interface -------------------
+opticopt('evacuated_tube_inner_cover', 2, {'dist'='g',
+'refl'=0, 'trans'=0.97468, 'errslope'=0.0,'errspec'=0.0,
+'refractr'=1.52, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// -------------------------------------------------------------------------
+
+// ---- Add Surface Optical Property -----------------------------------------------
+
+addoptic('evacuated_tube_absorber');
+// ---- Set Interface -------------------
+opticopt('evacuated_tube_absorber', 1, {'dist'='g',
+'refl'=0.04, 'trans'=0, 'errslope'=0.0,'errspec'=0.0,
+'refractr'=1.0, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// ---- Set Interface -------------------
+opticopt('evacuated_tube_absorber', 2, {'dist'='g',
+'refl'=0.04, 'trans'=0, 'errslope'=0.0,'errspec'=0.0,
+'refractr'=1.0, 'refracti'=1.0, 'apstop'=3,
+'difford'=4, 'grating'=[1.1, 1.2, 1.3, 1.4]});
+// --------------------------------------------
+
+// -------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------- 
+
+// ---- Setting the Geometry box --------------------------------------------------------- 
+
+clearstages();
+// ---- Setting a Stage for the Geometries to be added --------------
+
+addstage('linear_fresnel');
+stageopt('linear_fresnel', {'x'=0, 'y'=0, 'z'=0,
+'ax'=0, 'ay'=0, 'az'=1, 'zrot'=0,
+'virtual'=false, 'multihit'=true, 'tracethrough'=false});
+activestage('linear_fresnel');
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(0, {'en'=true, 'x'=6.0, 'y'=0.0, 'z'=0.0,
+'ax'=9.4609, 'ay'=0.0, 'az'=9.6873, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_1'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(1, {'en'=true, 'x'=5.5, 'y'=0.0, 'z'=0.0,
+'ax'=9.0562, 'ay'=0.0, 'az'=9.3502, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_2'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(2, {'en'=true, 'x'=5.0, 'y'=0.0, 'z'=0.0,
+'ax'=8.656, 'ay'=0.0, 'az'=9.0253, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_3'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(3, {'en'=true, 'x'=4.5, 'y'=0.0, 'z'=0.0,
+'ax'=8.2613, 'ay'=0.0, 'az'=8.7135, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_4'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(4, {'en'=true, 'x'=4.0, 'y'=0.0, 'z'=0.0,
+'ax'=7.8726, 'ay'=0.0, 'az'=8.4158, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_5'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(5, {'en'=true, 'x'=3.5, 'y'=0.0, 'z'=0.0,
+'ax'=7.4908, 'ay'=0.0, 'az'=8.133, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_6'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(6, {'en'=true, 'x'=3.0, 'y'=0.0, 'z'=0.0,
+'ax'=7.1167, 'ay'=0.0, 'az'=7.8661, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_7'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(7, {'en'=true, 'x'=2.5, 'y'=0.0, 'z'=0.0,
+'ax'=6.7513, 'ay'=0.0, 'az'=7.6157, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_8'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(8, {'en'=true, 'x'=2.0, 'y'=0.0, 'z'=0.0,
+'ax'=6.3956, 'ay'=0.0, 'az'=7.3825, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_9'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(9, {'en'=true, 'x'=1.5, 'y'=0.0, 'z'=0.0,
+'ax'=6.0504, 'ay'=0.0, 'az'=7.167, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_10'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(10, {'en'=true, 'x'=1.0, 'y'=0.0, 'z'=0.0,
+'ax'=5.7166, 'ay'=0.0, 'az'=6.9696, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_11'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(11, {'en'=true, 'x'=0.5, 'y'=0.0, 'z'=0.0,
+'ax'=5.3952, 'ay'=0.0, 'az'=6.7904, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_12'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(12, {'en'=true, 'x'=0.0, 'y'=0.0, 'z'=0.0,
+'ax'=5.0868, 'ay'=0.0, 'az'=6.6292, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_13'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(13, {'en'=true, 'x'=-0.5, 'y'=0.0, 'z'=0.0,
+'ax'=4.792, 'ay'=0.0, 'az'=6.4859, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_14'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(14, {'en'=true, 'x'=-1.0, 'y'=0.0, 'z'=0.0,
+'ax'=4.5114, 'ay'=0.0, 'az'=6.3598, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_15'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(15, {'en'=true, 'x'=-1.5, 'y'=0.0, 'z'=0.0,
+'ax'=4.2451, 'ay'=0.0, 'az'=6.2503, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_16'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(16, {'en'=true, 'x'=-2.0, 'y'=0.0, 'z'=0.0,
+'ax'=3.9933, 'ay'=0.0, 'az'=6.1565, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_17'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(17, {'en'=true, 'x'=-2.5, 'y'=0.0, 'z'=0.0,
+'ax'=3.7559, 'ay'=0.0, 'az'=6.0775, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_18'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(18, {'en'=true, 'x'=-3.0, 'y'=0.0, 'z'=0.0,
+'ax'=3.5326, 'ay'=0.0, 'az'=6.0123, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_19'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(19, {'en'=true, 'x'=-3.5, 'y'=0.0, 'z'=0.0,
+'ax'=3.323, 'ay'=0.0, 'az'=5.9598, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_20'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(20, {'en'=true, 'x'=-4.0, 'y'=0.0, 'z'=0.0,
+'ax'=3.1267, 'ay'=0.0, 'az'=5.9188, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_21'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(21, {'en'=true, 'x'=-4.5, 'y'=0.0, 'z'=0.0,
+'ax'=2.9431, 'ay'=0.0, 'az'=5.8883, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_22'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(22, {'en'=true, 'x'=-5.0, 'y'=0.0, 'z'=0.0,
+'ax'=2.7715, 'ay'=0.0, 'az'=5.8674, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_23'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(23, {'en'=true, 'x'=-5.5, 'y'=0.0, 'z'=0.0,
+'ax'=2.6112, 'ay'=0.0, 'az'=5.855, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_24'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(24, {'en'=true, 'x'=-6.0, 'y'=0.0, 'z'=0.0,
+'ax'=2.4615, 'ay'=0.0, 'az'=5.8503, 'zrot'=0,
+'aper'=['r', 0.25, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['p', 0.0404, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='primaries_refl', 'comment'='Heliostat_25'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(25, {'en'=true, 'x'=-0.5961, 'y'=0.0, 'z'=8.4264,
+'ax'=1981.4134, 'ay'=0.0, 'az'=-24.4144, 'zrot'=0,
+'aper'=['r', 0.1408, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_0'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(26, {'en'=true, 'x'=-0.5918, 'y'=0.0, 'z'=8.5573,
+'ax'=1466.8659, 'ay'=0.0, 'az'=-65.77, 'zrot'=0,
+'aper'=['r', 0.1212, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_1'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(27, {'en'=true, 'x'=-0.5843, 'y'=0.0, 'z'=8.6703,
+'ax'=1104.9119, 'ay'=0.0, 'az'=-85.127, 'zrot'=0,
+'aper'=['r', 0.1053, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_2'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(28, {'en'=true, 'x'=-0.5744, 'y'=0.0, 'z'=8.7686,
+'ax'=845.3328, 'ay'=0.0, 'az'=-92.0959, 'zrot'=0,
+'aper'=['r', 0.0923, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_3'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(29, {'en'=true, 'x'=-0.5627, 'y'=0.0, 'z'=8.8547,
+'ax'=655.9002, 'ay'=0.0, 'az'=-92.1805, 'zrot'=0,
+'aper'=['r', 0.0815, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_4'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(30, {'en'=true, 'x'=-0.5498, 'y'=0.0, 'z'=8.9306,
+'ax'=515.4568, 'ay'=0.0, 'az'=-88.5649, 'zrot'=0,
+'aper'=['r', 0.0725, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_5'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(31, {'en'=true, 'x'=-0.536, 'y'=0.0, 'z'=8.9978,
+'ax'=409.8243, 'ay'=0.0, 'az'=-83.0986, 'zrot'=0,
+'aper'=['r', 0.0649, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_6'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(32, {'en'=true, 'x'=-0.5215, 'y'=0.0, 'z'=9.0577,
+'ax'=329.3221, 'ay'=0.0, 'az'=-76.853, 'zrot'=0,
+'aper'=['r', 0.0584, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_7'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(33, {'en'=true, 'x'=-0.5067, 'y'=0.0, 'z'=9.1113,
+'ax'=267.2263, 'ay'=0.0, 'az'=-70.4411, 'zrot'=0,
+'aper'=['r', 0.0528, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_8'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(34, {'en'=true, 'x'=-0.4915, 'y'=0.0, 'z'=9.1594,
+'ax'=218.7928, 'ay'=0.0, 'az'=-64.2034, 'zrot'=0,
+'aper'=['r', 0.0481, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_9'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(35, {'en'=true, 'x'=-0.4762, 'y'=0.0, 'z'=9.2028,
+'ax'=180.6256, 'ay'=0.0, 'az'=-58.3191, 'zrot'=0,
+'aper'=['r', 0.044, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_10'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(36, {'en'=true, 'x'=-0.4608, 'y'=0.0, 'z'=9.2421,
+'ax'=150.261, 'ay'=0.0, 'az'=-52.8714, 'zrot'=0,
+'aper'=['r', 0.0404, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_11'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(37, {'en'=true, 'x'=-0.4455, 'y'=0.0, 'z'=9.2777,
+'ax'=125.8894, 'ay'=0.0, 'az'=-47.8875, 'zrot'=0,
+'aper'=['r', 0.0372, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_12'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(38, {'en'=true, 'x'=-0.4301, 'y'=0.0, 'z'=9.3101,
+'ax'=106.1663, 'ay'=0.0, 'az'=-43.363, 'zrot'=0,
+'aper'=['r', 0.0345, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_13'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(39, {'en'=true, 'x'=-0.4149, 'y'=0.0, 'z'=9.3397,
+'ax'=90.0818, 'ay'=0.0, 'az'=-39.2757, 'zrot'=0,
+'aper'=['r', 0.0321, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_14'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(40, {'en'=true, 'x'=-0.3998, 'y'=0.0, 'z'=9.3667,
+'ax'=76.8701, 'ay'=0.0, 'az'=-35.5951, 'zrot'=0,
+'aper'=['r', 0.0299, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_15'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(41, {'en'=true, 'x'=-0.3849, 'y'=0.0, 'z'=9.3915,
+'ax'=65.9446, 'ay'=0.0, 'az'=-32.2871, 'zrot'=0,
+'aper'=['r', 0.028, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_16'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(42, {'en'=true, 'x'=-0.37, 'y'=0.0, 'z'=9.4142,
+'ax'=56.8522, 'ay'=0.0, 'az'=-29.3176, 'zrot'=0,
+'aper'=['r', 0.0263, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_17'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(43, {'en'=true, 'x'=-0.3554, 'y'=0.0, 'z'=9.4351,
+'ax'=49.2399, 'ay'=0.0, 'az'=-26.6535, 'zrot'=0,
+'aper'=['r', 0.0248, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_18'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(44, {'en'=true, 'x'=-0.3409, 'y'=0.0, 'z'=9.4544,
+'ax'=42.8308, 'ay'=0.0, 'az'=-24.2644, 'zrot'=0,
+'aper'=['r', 0.0234, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_19'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(45, {'en'=true, 'x'=-0.3266, 'y'=0.0, 'z'=9.4721,
+'ax'=37.4056, 'ay'=0.0, 'az'=-22.1221, 'zrot'=0,
+'aper'=['r', 0.0222, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_20'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(46, {'en'=true, 'x'=-0.3124, 'y'=0.0, 'z'=9.4884,
+'ax'=32.7899, 'ay'=0.0, 'az'=-20.2017, 'zrot'=0,
+'aper'=['r', 0.0211, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_21'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(47, {'en'=true, 'x'=-0.2984, 'y'=0.0, 'z'=9.5035,
+'ax'=28.8438, 'ay'=0.0, 'az'=-18.4807, 'zrot'=0,
+'aper'=['r', 0.0201, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_22'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(48, {'en'=true, 'x'=-0.2846, 'y'=0.0, 'z'=9.5175,
+'ax'=25.4545, 'ay'=0.0, 'az'=-16.9394, 'zrot'=0,
+'aper'=['r', 0.0192, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_23'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(49, {'en'=true, 'x'=-0.2709, 'y'=0.0, 'z'=9.5304,
+'ax'=22.5302, 'ay'=0.0, 'az'=-15.5603, 'zrot'=0,
+'aper'=['r', 0.0184, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_24'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(50, {'en'=true, 'x'=-0.2573, 'y'=0.0, 'z'=9.5423,
+'ax'=19.9962, 'ay'=0.0, 'az'=-14.3282, 'zrot'=0,
+'aper'=['r', 0.0177, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_25'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(51, {'en'=true, 'x'=-0.2439, 'y'=0.0, 'z'=9.5533,
+'ax'=17.791, 'ay'=0.0, 'az'=-13.23, 'zrot'=0,
+'aper'=['r', 0.017, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_26'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(52, {'en'=true, 'x'=-0.2306, 'y'=0.0, 'z'=9.5635,
+'ax'=15.8639, 'ay'=0.0, 'az'=-12.2542, 'zrot'=0,
+'aper'=['r', 0.0165, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_27'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(53, {'en'=true, 'x'=-0.2174, 'y'=0.0, 'z'=9.5729,
+'ax'=14.1727, 'ay'=0.0, 'az'=-11.3912, 'zrot'=0,
+'aper'=['r', 0.0159, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_28'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(54, {'en'=true, 'x'=-0.206, 'y'=0.0, 'z'=9.5804,
+'ax'=6.6196, 'ay'=0.0, 'az'=-1.3133, 'zrot'=0,
+'aper'=['r', 0.0113, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_29'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(55, {'en'=true, 'x'=-0.1963, 'y'=0.0, 'z'=9.5861,
+'ax'=5.8104, 'ay'=0.0, 'az'=-1.1505, 'zrot'=0,
+'aper'=['r', 0.0111, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_30'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(56, {'en'=true, 'x'=-0.1867, 'y'=0.0, 'z'=9.5912,
+'ax'=5.0398, 'ay'=0.0, 'az'=-0.9459, 'zrot'=0,
+'aper'=['r', 0.0108, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_31'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(57, {'en'=true, 'x'=-0.1769, 'y'=0.0, 'z'=9.5958,
+'ax'=4.3091, 'ay'=0.0, 'az'=-0.7033, 'zrot'=0,
+'aper'=['r', 0.0106, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_32'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(58, {'en'=true, 'x'=-0.1672, 'y'=0.0, 'z'=9.5997,
+'ax'=3.6198, 'ay'=0.0, 'az'=-0.4263, 'zrot'=0,
+'aper'=['r', 0.0104, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_33'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(59, {'en'=true, 'x'=-0.1576, 'y'=0.0, 'z'=9.6031,
+'ax'=2.9728, 'ay'=0.0, 'az'=-0.1185, 'zrot'=0,
+'aper'=['r', 0.0101, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_34'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(60, {'en'=true, 'x'=-0.148, 'y'=0.0, 'z'=9.6059,
+'ax'=2.3687, 'ay'=0.0, 'az'=0.2162, 'zrot'=0,
+'aper'=['r', 0.0099, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_35'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(61, {'en'=true, 'x'=-0.1385, 'y'=0.0, 'z'=9.6082,
+'ax'=1.8081, 'ay'=0.0, 'az'=0.5742, 'zrot'=0,
+'aper'=['r', 0.0096, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_36'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(62, {'en'=true, 'x'=-0.1292, 'y'=0.0, 'z'=9.61,
+'ax'=1.291, 'ay'=0.0, 'az'=0.9521, 'zrot'=0,
+'aper'=['r', 0.0094, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_37'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(63, {'en'=true, 'x'=-0.1201, 'y'=0.0, 'z'=9.6112,
+'ax'=0.8174, 'ay'=0.0, 'az'=1.3462, 'zrot'=0,
+'aper'=['r', 0.0091, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_38'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(64, {'en'=true, 'x'=-0.1111, 'y'=0.0, 'z'=9.612,
+'ax'=0.3871, 'ay'=0.0, 'az'=1.7532, 'zrot'=0,
+'aper'=['r', 0.0089, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_39'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(65, {'en'=true, 'x'=-0.1024, 'y'=0.0, 'z'=9.6124,
+'ax'=-0.0006, 'ay'=0.0, 'az'=2.1698, 'zrot'=0,
+'aper'=['r', 0.0086, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_40'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(66, {'en'=true, 'x'=-0.0939, 'y'=0.0, 'z'=9.6123,
+'ax'=-0.3465, 'ay'=0.0, 'az'=2.5927, 'zrot'=0,
+'aper'=['r', 0.0084, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_41'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(67, {'en'=true, 'x'=-0.0856, 'y'=0.0, 'z'=9.6118,
+'ax'=-0.6515, 'ay'=0.0, 'az'=3.0188, 'zrot'=0,
+'aper'=['r', 0.0081, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_42'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(68, {'en'=true, 'x'=-0.0777, 'y'=0.0, 'z'=9.6109,
+'ax'=-0.9167, 'ay'=0.0, 'az'=3.4454, 'zrot'=0,
+'aper'=['r', 0.0079, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_43'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(69, {'en'=true, 'x'=-0.07, 'y'=0.0, 'z'=9.6097,
+'ax'=-1.1436, 'ay'=0.0, 'az'=3.8696, 'zrot'=0,
+'aper'=['r', 0.0076, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_44'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(70, {'en'=true, 'x'=-0.0627, 'y'=0.0, 'z'=9.6081,
+'ax'=-1.3336, 'ay'=0.0, 'az'=4.2888, 'zrot'=0,
+'aper'=['r', 0.0074, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_45'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(71, {'en'=true, 'x'=-0.0556, 'y'=0.0, 'z'=9.6063,
+'ax'=-1.4885, 'ay'=0.0, 'az'=4.7006, 'zrot'=0,
+'aper'=['r', 0.0071, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_46'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(72, {'en'=true, 'x'=-0.0489, 'y'=0.0, 'z'=9.6041,
+'ax'=-1.61, 'ay'=0.0, 'az'=5.1027, 'zrot'=0,
+'aper'=['r', 0.0069, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_47'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(73, {'en'=true, 'x'=-0.0426, 'y'=0.0, 'z'=9.6017,
+'ax'=-1.7001, 'ay'=0.0, 'az'=5.4932, 'zrot'=0,
+'aper'=['r', 0.0067, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_48'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(74, {'en'=true, 'x'=-0.0366, 'y'=0.0, 'z'=9.5992,
+'ax'=-1.7608, 'ay'=0.0, 'az'=5.8702, 'zrot'=0,
+'aper'=['r', 0.0064, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_49'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(75, {'en'=true, 'x'=-0.031, 'y'=0.0, 'z'=9.5964,
+'ax'=-1.7942, 'ay'=0.0, 'az'=6.2319, 'zrot'=0,
+'aper'=['r', 0.0062, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_50'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(76, {'en'=true, 'x'=-0.0257, 'y'=0.0, 'z'=9.5934,
+'ax'=-1.8026, 'ay'=0.0, 'az'=6.5771, 'zrot'=0,
+'aper'=['r', 0.0059, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_51'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(77, {'en'=true, 'x'=-0.0208, 'y'=0.0, 'z'=9.5904,
+'ax'=-1.7882, 'ay'=0.0, 'az'=6.9045, 'zrot'=0,
+'aper'=['r', 0.0057, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_52'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(78, {'en'=true, 'x'=-0.0162, 'y'=0.0, 'z'=9.5872,
+'ax'=-1.7533, 'ay'=0.0, 'az'=7.213, 'zrot'=0,
+'aper'=['r', 0.0054, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_53'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(79, {'en'=true, 'x'=-0.012, 'y'=0.0, 'z'=9.584,
+'ax'=-1.7002, 'ay'=0.0, 'az'=7.5018, 'zrot'=0,
+'aper'=['r', 0.0052, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_54'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(80, {'en'=true, 'x'=-0.0082, 'y'=0.0, 'z'=9.5807,
+'ax'=-1.6313, 'ay'=0.0, 'az'=7.7703, 'zrot'=0,
+'aper'=['r', 0.0049, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_55'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(81, {'en'=true, 'x'=-0.0047, 'y'=0.0, 'z'=9.5774,
+'ax'=-1.5489, 'ay'=0.0, 'az'=8.0181, 'zrot'=0,
+'aper'=['r', 0.0047, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_56'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(82, {'en'=true, 'x'=-0.0015, 'y'=0.0, 'z'=9.5741,
+'ax'=-1.4553, 'ay'=0.0, 'az'=8.2451, 'zrot'=0,
+'aper'=['r', 0.0044, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_57'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(83, {'en'=true, 'x'=0.0015, 'y'=0.0, 'z'=9.5741,
+'ax'=1.4553, 'ay'=0.0, 'az'=8.2451, 'zrot'=0,
+'aper'=['r', 0.0044, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_58'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(84, {'en'=true, 'x'=0.0047, 'y'=0.0, 'z'=9.5774,
+'ax'=1.5489, 'ay'=0.0, 'az'=8.0181, 'zrot'=0,
+'aper'=['r', 0.0047, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_59'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(85, {'en'=true, 'x'=0.0082, 'y'=0.0, 'z'=9.5807,
+'ax'=1.6313, 'ay'=0.0, 'az'=7.7703, 'zrot'=0,
+'aper'=['r', 0.0049, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_60'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(86, {'en'=true, 'x'=0.012, 'y'=0.0, 'z'=9.584,
+'ax'=1.7002, 'ay'=0.0, 'az'=7.5018, 'zrot'=0,
+'aper'=['r', 0.0052, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_61'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(87, {'en'=true, 'x'=0.0162, 'y'=0.0, 'z'=9.5872,
+'ax'=1.7533, 'ay'=0.0, 'az'=7.213, 'zrot'=0,
+'aper'=['r', 0.0054, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_62'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(88, {'en'=true, 'x'=0.0208, 'y'=0.0, 'z'=9.5904,
+'ax'=1.7882, 'ay'=0.0, 'az'=6.9045, 'zrot'=0,
+'aper'=['r', 0.0057, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_63'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(89, {'en'=true, 'x'=0.0257, 'y'=0.0, 'z'=9.5934,
+'ax'=1.8026, 'ay'=0.0, 'az'=6.5771, 'zrot'=0,
+'aper'=['r', 0.0059, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_64'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(90, {'en'=true, 'x'=0.031, 'y'=0.0, 'z'=9.5964,
+'ax'=1.7942, 'ay'=0.0, 'az'=6.2319, 'zrot'=0,
+'aper'=['r', 0.0062, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_65'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(91, {'en'=true, 'x'=0.0366, 'y'=0.0, 'z'=9.5992,
+'ax'=1.7608, 'ay'=0.0, 'az'=5.8702, 'zrot'=0,
+'aper'=['r', 0.0064, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_66'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(92, {'en'=true, 'x'=0.0426, 'y'=0.0, 'z'=9.6017,
+'ax'=1.7001, 'ay'=0.0, 'az'=5.4932, 'zrot'=0,
+'aper'=['r', 0.0067, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_67'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(93, {'en'=true, 'x'=0.0489, 'y'=0.0, 'z'=9.6041,
+'ax'=1.61, 'ay'=0.0, 'az'=5.1027, 'zrot'=0,
+'aper'=['r', 0.0069, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_68'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(94, {'en'=true, 'x'=0.0556, 'y'=0.0, 'z'=9.6063,
+'ax'=1.4885, 'ay'=0.0, 'az'=4.7006, 'zrot'=0,
+'aper'=['r', 0.0071, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_69'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(95, {'en'=true, 'x'=0.0627, 'y'=0.0, 'z'=9.6081,
+'ax'=1.3336, 'ay'=0.0, 'az'=4.2888, 'zrot'=0,
+'aper'=['r', 0.0074, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_70'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(96, {'en'=true, 'x'=0.07, 'y'=0.0, 'z'=9.6097,
+'ax'=1.1436, 'ay'=0.0, 'az'=3.8696, 'zrot'=0,
+'aper'=['r', 0.0076, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_71'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(97, {'en'=true, 'x'=0.0777, 'y'=0.0, 'z'=9.6109,
+'ax'=0.9167, 'ay'=0.0, 'az'=3.4454, 'zrot'=0,
+'aper'=['r', 0.0079, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_72'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(98, {'en'=true, 'x'=0.0856, 'y'=0.0, 'z'=9.6118,
+'ax'=0.6515, 'ay'=0.0, 'az'=3.0188, 'zrot'=0,
+'aper'=['r', 0.0081, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_73'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(99, {'en'=true, 'x'=0.0939, 'y'=0.0, 'z'=9.6123,
+'ax'=0.3465, 'ay'=0.0, 'az'=2.5927, 'zrot'=0,
+'aper'=['r', 0.0084, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_74'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(100, {'en'=true, 'x'=0.1024, 'y'=0.0, 'z'=9.6124,
+'ax'=0.0006, 'ay'=0.0, 'az'=2.1698, 'zrot'=0,
+'aper'=['r', 0.0086, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_75'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(101, {'en'=true, 'x'=0.1111, 'y'=0.0, 'z'=9.612,
+'ax'=-0.3871, 'ay'=0.0, 'az'=1.7532, 'zrot'=0,
+'aper'=['r', 0.0089, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_76'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(102, {'en'=true, 'x'=0.1201, 'y'=0.0, 'z'=9.6112,
+'ax'=-0.8174, 'ay'=0.0, 'az'=1.3462, 'zrot'=0,
+'aper'=['r', 0.0091, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_77'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(103, {'en'=true, 'x'=0.1292, 'y'=0.0, 'z'=9.61,
+'ax'=-1.291, 'ay'=0.0, 'az'=0.9521, 'zrot'=0,
+'aper'=['r', 0.0094, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_78'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(104, {'en'=true, 'x'=0.1385, 'y'=0.0, 'z'=9.6082,
+'ax'=-1.8081, 'ay'=0.0, 'az'=0.5742, 'zrot'=0,
+'aper'=['r', 0.0096, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_79'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(105, {'en'=true, 'x'=0.148, 'y'=0.0, 'z'=9.6059,
+'ax'=-2.3687, 'ay'=0.0, 'az'=0.2162, 'zrot'=0,
+'aper'=['r', 0.0099, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_80'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(106, {'en'=true, 'x'=0.1576, 'y'=0.0, 'z'=9.6031,
+'ax'=-2.9728, 'ay'=0.0, 'az'=-0.1185, 'zrot'=0,
+'aper'=['r', 0.0101, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_81'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(107, {'en'=true, 'x'=0.1672, 'y'=0.0, 'z'=9.5997,
+'ax'=-3.6198, 'ay'=0.0, 'az'=-0.4263, 'zrot'=0,
+'aper'=['r', 0.0104, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_82'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(108, {'en'=true, 'x'=0.1769, 'y'=0.0, 'z'=9.5958,
+'ax'=-4.3091, 'ay'=0.0, 'az'=-0.7033, 'zrot'=0,
+'aper'=['r', 0.0106, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_83'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(109, {'en'=true, 'x'=0.1867, 'y'=0.0, 'z'=9.5912,
+'ax'=-5.0398, 'ay'=0.0, 'az'=-0.9459, 'zrot'=0,
+'aper'=['r', 0.0108, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_84'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(110, {'en'=true, 'x'=0.1963, 'y'=0.0, 'z'=9.5861,
+'ax'=-5.8104, 'ay'=0.0, 'az'=-1.1505, 'zrot'=0,
+'aper'=['r', 0.0111, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_85'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(111, {'en'=true, 'x'=0.206, 'y'=0.0, 'z'=9.5804,
+'ax'=-6.6196, 'ay'=0.0, 'az'=-1.3133, 'zrot'=0,
+'aper'=['r', 0.0113, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_86'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(112, {'en'=true, 'x'=0.2174, 'y'=0.0, 'z'=9.5729,
+'ax'=-14.1727, 'ay'=0.0, 'az'=-11.3912, 'zrot'=0,
+'aper'=['r', 0.0159, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_87'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(113, {'en'=true, 'x'=0.2306, 'y'=0.0, 'z'=9.5635,
+'ax'=-15.8639, 'ay'=0.0, 'az'=-12.2542, 'zrot'=0,
+'aper'=['r', 0.0165, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_88'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(114, {'en'=true, 'x'=0.2439, 'y'=0.0, 'z'=9.5533,
+'ax'=-17.791, 'ay'=0.0, 'az'=-13.23, 'zrot'=0,
+'aper'=['r', 0.017, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_89'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(115, {'en'=true, 'x'=0.2573, 'y'=0.0, 'z'=9.5423,
+'ax'=-19.9962, 'ay'=0.0, 'az'=-14.3282, 'zrot'=0,
+'aper'=['r', 0.0177, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_90'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(116, {'en'=true, 'x'=0.2709, 'y'=0.0, 'z'=9.5304,
+'ax'=-22.5302, 'ay'=0.0, 'az'=-15.5603, 'zrot'=0,
+'aper'=['r', 0.0184, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_91'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(117, {'en'=true, 'x'=0.2846, 'y'=0.0, 'z'=9.5175,
+'ax'=-25.4545, 'ay'=0.0, 'az'=-16.9394, 'zrot'=0,
+'aper'=['r', 0.0192, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_92'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(118, {'en'=true, 'x'=0.2984, 'y'=0.0, 'z'=9.5035,
+'ax'=-28.8438, 'ay'=0.0, 'az'=-18.4807, 'zrot'=0,
+'aper'=['r', 0.0201, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_93'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(119, {'en'=true, 'x'=0.3124, 'y'=0.0, 'z'=9.4884,
+'ax'=-32.7899, 'ay'=0.0, 'az'=-20.2017, 'zrot'=0,
+'aper'=['r', 0.0211, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_94'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(120, {'en'=true, 'x'=0.3266, 'y'=0.0, 'z'=9.4721,
+'ax'=-37.4056, 'ay'=0.0, 'az'=-22.1221, 'zrot'=0,
+'aper'=['r', 0.0222, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_95'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(121, {'en'=true, 'x'=0.3409, 'y'=0.0, 'z'=9.4544,
+'ax'=-42.8308, 'ay'=0.0, 'az'=-24.2644, 'zrot'=0,
+'aper'=['r', 0.0234, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_96'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(122, {'en'=true, 'x'=0.3554, 'y'=0.0, 'z'=9.4351,
+'ax'=-49.2399, 'ay'=0.0, 'az'=-26.6535, 'zrot'=0,
+'aper'=['r', 0.0248, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_97'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(123, {'en'=true, 'x'=0.37, 'y'=0.0, 'z'=9.4142,
+'ax'=-56.8522, 'ay'=0.0, 'az'=-29.3176, 'zrot'=0,
+'aper'=['r', 0.0263, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_98'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(124, {'en'=true, 'x'=0.3849, 'y'=0.0, 'z'=9.3915,
+'ax'=-65.9446, 'ay'=0.0, 'az'=-32.2871, 'zrot'=0,
+'aper'=['r', 0.028, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_99'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(125, {'en'=true, 'x'=0.3998, 'y'=0.0, 'z'=9.3667,
+'ax'=-76.8701, 'ay'=0.0, 'az'=-35.5951, 'zrot'=0,
+'aper'=['r', 0.0299, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_100'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(126, {'en'=true, 'x'=0.4149, 'y'=0.0, 'z'=9.3397,
+'ax'=-90.0818, 'ay'=0.0, 'az'=-39.2757, 'zrot'=0,
+'aper'=['r', 0.0321, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_101'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(127, {'en'=true, 'x'=0.4301, 'y'=0.0, 'z'=9.3101,
+'ax'=-106.1663, 'ay'=0.0, 'az'=-43.363, 'zrot'=0,
+'aper'=['r', 0.0345, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_102'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(128, {'en'=true, 'x'=0.4455, 'y'=0.0, 'z'=9.2777,
+'ax'=-125.8894, 'ay'=0.0, 'az'=-47.8875, 'zrot'=0,
+'aper'=['r', 0.0372, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_103'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(129, {'en'=true, 'x'=0.4608, 'y'=0.0, 'z'=9.2421,
+'ax'=-150.261, 'ay'=0.0, 'az'=-52.8714, 'zrot'=0,
+'aper'=['r', 0.0404, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_104'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(130, {'en'=true, 'x'=0.4762, 'y'=0.0, 'z'=9.2028,
+'ax'=-180.6256, 'ay'=0.0, 'az'=-58.3191, 'zrot'=0,
+'aper'=['r', 0.044, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_105'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(131, {'en'=true, 'x'=0.4915, 'y'=0.0, 'z'=9.1594,
+'ax'=-218.7928, 'ay'=0.0, 'az'=-64.2034, 'zrot'=0,
+'aper'=['r', 0.0481, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_106'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(132, {'en'=true, 'x'=0.5067, 'y'=0.0, 'z'=9.1113,
+'ax'=-267.2263, 'ay'=0.0, 'az'=-70.4411, 'zrot'=0,
+'aper'=['r', 0.0528, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_107'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(133, {'en'=true, 'x'=0.5215, 'y'=0.0, 'z'=9.0577,
+'ax'=-329.3221, 'ay'=0.0, 'az'=-76.853, 'zrot'=0,
+'aper'=['r', 0.0584, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_108'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(134, {'en'=true, 'x'=0.536, 'y'=0.0, 'z'=8.9978,
+'ax'=-409.8243, 'ay'=0.0, 'az'=-83.0986, 'zrot'=0,
+'aper'=['r', 0.0649, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_109'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(135, {'en'=true, 'x'=0.5498, 'y'=0.0, 'z'=8.9306,
+'ax'=-515.4568, 'ay'=0.0, 'az'=-88.5649, 'zrot'=0,
+'aper'=['r', 0.0725, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_110'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(136, {'en'=true, 'x'=0.5627, 'y'=0.0, 'z'=8.8547,
+'ax'=-655.9002, 'ay'=0.0, 'az'=-92.1805, 'zrot'=0,
+'aper'=['r', 0.0815, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_111'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(137, {'en'=true, 'x'=0.5744, 'y'=0.0, 'z'=8.7686,
+'ax'=-845.3328, 'ay'=0.0, 'az'=-92.0959, 'zrot'=0,
+'aper'=['r', 0.0923, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_112'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(138, {'en'=true, 'x'=0.5843, 'y'=0.0, 'z'=8.6703,
+'ax'=-1104.9119, 'ay'=0.0, 'az'=-85.127, 'zrot'=0,
+'aper'=['r', 0.1053, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_113'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(139, {'en'=true, 'x'=0.5918, 'y'=0.0, 'z'=8.5573,
+'ax'=-1466.8659, 'ay'=0.0, 'az'=-65.77, 'zrot'=0,
+'aper'=['r', 0.1212, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_114'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(140, {'en'=true, 'x'=0.5961, 'y'=0.0, 'z'=8.4264,
+'ax'=-1981.4134, 'ay'=0.0, 'az'=-24.4144, 'zrot'=0,
+'aper'=['r', 0.1408, 6.0, 0, 0, 0, 0, 0, 0],
+'surf'=['f', 0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='secondary_refl', 'comment'='secondary_optic_115'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(141, {'en'=true, 'x'=0.0, 'y'=0.0, 'z'=9.3175,
+'ax'=0.0, 'ay'=0.0, 'az'=9.44, 'zrot'=0,
+'aper'=['l', 0, 0, 6.0, 0, 0, 0, 0, 0],
+'surf'=['t', 8.1633, 0, 0, 0, 0, 0, 0, 0], 'interact'='refraction',
+'optic'='evacuated_tube_outer_cover', 'comment'='evacuated_tube_outer_cover'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(142, {'en'=true, 'x'=0.0, 'y'=0.0, 'z'=9.3205,
+'ax'=0.0, 'ay'=0.0, 'az'=9.44, 'zrot'=0,
+'aper'=['l', 0, 0, 6.0, 0, 0, 0, 0, 0],
+'surf'=['t', 8.3682, 0, 0, 0, 0, 0, 0, 0], 'interact'='refraction',
+'optic'='evacuated_tube_inner_cover', 'comment'='evacuated_tube_inner_cover'});
+// --------------------------------------------------------
+
+// -- Add an element to the current stage -----------------
+
+addelement();
+elementopt(143, {'en'=true, 'x'=0.0, 'y'=0.0, 'z'=9.34,
+'ax'=0.0, 'ay'=0.0, 'az'=9.44, 'zrot'=0,
+'aper'=['l', 0, 0, 6.0, 0, 0, 0, 0, 0],
+'surf'=['t', 10.0, 0, 0, 0, 0, 0, 0, 0], 'interact'='reflection',
+'optic'='evacuated_tube_absorber', 'comment'='evacuated_tube_absorber'});
+// --------------------------------------------------------
+
+// -----------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------- 
+
+// ---- Setting the Ray-tracing simulation -------------------------------------------------
+
+traceopt({ 
+'rays'=691855, 'maxrays'=103778250,
+'include_sunshape'=true, 'optical_errors'=true,
+'cpus'=10, 'seed'=123, 'point_focus'=false});
+trace();
+//-----------------------------------------------------------------------------------------
+
+//---- Setting the results outputs ----------------------------------------
+
+absorber_data = elementstats(0, 143, 150, 150, 1000.0, true);
+
+absorber_data{'generated_rays'} = sundata(){'nrays'};
+cwd('C:\\Users\\INIESC\\Documents\\PythonProjects\\PhD\\on_secondaries\\comparison_Cheng2018\\simulation_files\\acceptance\\cheng_cpc\\75.0');
+filename = 'absorber_flux_optic_-1.2_stats.json';
+stats_file = open(filename, 'w');
+write_line(stats_file, '{');
+
+float_keys = ["generated_rays", "min_flux", "bin_size_x", "power_per_ray", "bin_size_y", "peak_flux",
+"ave_flux", "sigma_flux", "radius", "num_rays"];
+for (i=0; i<#float_keys; i++)
+{
+write_line(stats_file, '"' + float_keys[i] + '": ' + absorber_data{float_keys[i]} + ',');
+}
+
+vector_keys = ['centroid', 'xvalues', 'yvalues'];
+for (i=0; i<#vector_keys; i++)
+{
+write_line(stats_file, '"' + vector_keys[i] + '": [' + absorber_data{vector_keys[i]} + '],');
+}
+
+rays_bins = absorber_data{'flux'};
+for (i = 0; i < #rays_bins; i++){
+	if (i==0)
+	{
+	string_to_write = '"flux": [[' + rays_bins[i] + '],';
+	write(stats_file, string_to_write, #string_to_write);
+	}
+	elseif (i > 0 && i < #rays_bins - 1)
+	{
+	string_to_write = '[' + rays_bins[i] + '],';
+	write(stats_file, string_to_write, #string_to_write);
+	}
+	else
+	{
+	string_to_write = '[' + rays_bins[i] + ']]\n';
+	write(stats_file, string_to_write, #string_to_write);
+	}
+}
+write_line(stats_file, '}');
+close(stats_file);
+//---------------------------------------------------------------------
+
